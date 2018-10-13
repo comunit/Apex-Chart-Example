@@ -68,13 +68,26 @@ const chart = new ApexCharts(document.querySelector("#chart"), options);
 // render chart
 chart.render();
 
+const button = document.querySelector("button");
 // event method example
-document.querySelector("button").addEventListener("click", () =>
-  chart.updateOptions({
-    plotOptions: {
-      bar: {
-        horizontal: true
+button.addEventListener("click", () => {
+  if (button.textContent == "Horizontal") {
+    button.innerText = "Vertical";
+    chart.updateOptions({
+      plotOptions: {
+        bar: {
+          horizontal: true
+        }
       }
-    }
-  })
-);
+    });
+  } else {
+    button.innerText = "Horizontal";
+    chart.updateOptions({
+      plotOptions: {
+        bar: {
+          horizontal: false
+        }
+      }
+    });
+  }
+});
